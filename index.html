@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,300;1,400;1,500&display=swap"
       rel="stylesheet"
     />
 
@@ -31,9 +31,10 @@
   </head>
   <body>
     <h1 class="main-title">Book-Collection</h1>
+
     <div class="wrapper">
       <div class="table">
-        <div class="row book-container">
+        <!-- <div class="row book-container">
           <i class="fas fa-book"></i>
           <div class="title-author-container">
             <h2 class="title">Javascript</h2>
@@ -42,8 +43,18 @@
           <p class="pages">614 pages</p>
           <p class="status">Read</p>
           <i class="fas fa-trash"></i>
-        </div>
+        </div> -->
+
+        <form class="hidden">
+          <label>Title: <input class="title-input" type="text" /></label>
+          <label>Author: <input class="author-input" type="text" /></label>
+          <label
+            >Page Count: <input class="page-input" type="number" min="1" max="9999"
+          /></label>
+          <label><input class="read-status" type="checkbox" /> Read</label>
+        </form>
       </div>
     </div>
+    <script src="scripts/main.js"></script>
   </body>
 </html>
