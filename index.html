@@ -33,28 +33,21 @@
     <h1 class="main-title">Book-Collection</h1>
 
     <div class="wrapper">
-      <div class="table">
-        <!-- <div class="row book-container">
-          <i class="fas fa-book"></i>
-          <div class="title-author-container">
-            <h2 class="title">Javascript</h2>
-            <p class="author">Jon Duckett</p>
-          </div>
-          <p class="pages">614 pages</p>
-          <p class="status">Read</p>
-          <i class="fas fa-trash"></i>
-        </div> -->
+      <div class="table"></div>
 
-        <form class="hidden">
-          <label>Title: <input class="title-input" type="text" /></label>
-          <label>Author: <input class="author-input" type="text" /></label>
-          <label
-            >Page Count: <input class="page-input" type="number" min="1" max="9999"
-          /></label>
-          <label><input class="read-status" type="checkbox" /> Read</label>
-        </form>
-      </div>
+      <form class="form hidden">
+        <label>Title: <input class="title-input" type="text" /></label>
+        <label>Author: <input class="author-input" type="text" /></label>
+        <label
+          >Page Count: <input class="page-input" type="number" min="1" max="9999"
+        /></label>
+        <label><input class="read-status" type="checkbox" /> Read</label>
+        <label><input class="btn-add" type="button" value="Add" /></label>
+      </form>
     </div>
+
+    <input class="btn-newbook" type="button" value="New book" />
+
     <script src="scripts/main.js"></script>
   </body>
 </html>

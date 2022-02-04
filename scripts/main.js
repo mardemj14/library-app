@@ -1,6 +1,12 @@
 'use strict';
 
 const table = document.querySelector('.table');
+const btnNewBook = document.querySelector('.btn-newbook');
+const btnAdd = document.querySelector('.btn-add');
+const titleInput = document.querySelector('.title-input');
+const authorInput = document.querySelector('.author-input');
+const pageInput = document.querySelector('.page-input');
+const statusInput = document.querySelector('.read-status');
 
 const library = [
   new Book('Javascript', 'Jon Duckett', 614, true),
@@ -14,7 +20,22 @@ function Book(title, author, pages, isRead = false) {
   this.isRead = isRead ? 'Read' : 'Un-Read';
 }
 
-function addBookToLibrary() {}
+function addBookToLibrary() {
+  const newBook = new Book(
+    titleInput.value,
+    authorInput.value,
+    pageInput.value,
+    statusInput.checked
+  );
+
+  library.push(newBook);
+  clearForm();
+  closeForm();
+
+  table.innerHTML = '';
+
+  addBooksToPage(library);
+}
 
 // write a funtion that
 // loops through the array
@@ -56,9 +77,28 @@ function createBookElements(book) {
   container.appendChild(faBookIcon);
   container.appendChild(taContainer);
   container.appendChild(pages);
+  container.appendChild(readStatus);
   container.appendChild(faTrashIcon);
 
   table.appendChild(container);
 }
 
-addBooksToPage(library);
+const openForm = () => {
+  const form = document.querySelector('.form');
+  form.classList.remove('hidden');
+};
+
+const closeForm = () => {
+  const form = document.querySelector('.form');
+  form.classList.add('hidden');
+};
+
+const clearForm = () => {
+  titleInput.value = '';
+  authorInput.value = '';
+  pageInput.value = '';
+  statusInput.checked = false;
+};
+
+btnNewBook.addEventListener('click', openForm);
+btnAdd.addEventListener('click', addBookToLibrary);
