@@ -21,7 +21,7 @@ function Book(title, author, pages, isRead = false) {
 
 function addBookToLibrary() {
   if (titleInput.value === '' || authorInput.value === '' || pageInput.value === '') {
-    alert('Please fill out all fields in the form');
+    alert('Please fill in all fields');
   } else {
     const newBook = new Book(
       titleInput.value,
