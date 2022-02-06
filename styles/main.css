@@ -5,7 +5,9 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2c3333;
+  color: #f5f2e7;
 }
 
 .main-title {
@@ -22,39 +24,58 @@ body {
 }
 
 .row {
+  background-color: #677277;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .title {
   font-size: 1.5rem;
+  font-weight: 700;
   font-style: italic;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
 }
 
 .title-author-container {
-  margin-left: 10px;
+  margin-left: 20px;
   flex-grow: 1;
 }
 
 .fa-trash,
 .status {
-  margin-left: 15%;
+  margin-left: 50px;
+}
+
+.fa-trash:hover {
+  cursor: pointer;
+  color: rgb(247, 111, 111);
+}
+
+.fa-book {
+  font-size: 2rem;
+}
+
+.pages,
+.status {
+  width: 100px;
 }
 
 form {
-  border: 1px solid black;
   border-radius: 5px;
-  background-color: rgb(129, 169, 214);
-  width: 300px;
-  height: 300px;
+  background-color: #395b64;
+  width: 400px;
+  height: 350px;
   position: absolute;
   padding: 20px;
   left: 50%;
   top: 50%;
-  margin-left: -150px;
-  margin-top: -150px;
+  margin-left: -200px;
+  margin-top: -175px;
 }
 
 label {
@@ -64,11 +85,13 @@ label {
 
 input {
   width: 100%;
+  height: 30px;
   margin-top: 3px;
 }
 
 input[type='checkbox'] {
   width: unset;
+  vertical-align: middle;
 }
 
 input[type='button'] {
@@ -76,6 +99,30 @@ input[type='button'] {
   height: 40px;
   display: block;
   margin: 40px auto 0;
+}
+
+input[type='button']:hover {
+  cursor: pointer;
+}
+
+.form-btns {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-label {
+  margin: 0;
+}
+
+.btn-add {
+  background-color: rgb(109, 177, 109);
+  border-style: none;
+  border-radius: 5px;
+}
+
+.btn-cancel {
+  border-style: none;
+  border-radius: 5px;
 }
 
 .hidden {

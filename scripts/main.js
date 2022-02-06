@@ -3,15 +3,14 @@
 const table = document.querySelector('.table');
 const btnNewBook = document.querySelector('.btn-newbook');
 const btnAdd = document.querySelector('.btn-add');
+const btnCancel = document.querySelector('.btn-cancel');
+
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
 const pageInput = document.querySelector('.page-input');
 const statusInput = document.querySelector('.read-status');
 
-const library = [
-  new Book('Javascript', 'Jon Duckett', 614, true),
-  new Book('Linux Pocket Guide', 'Daniel J. Barrett', 167, false),
-];
+const library = [];
 
 function Book(title, author, pages, isRead = false) {
   this.title = title;
@@ -29,58 +28,37 @@ function addBookToLibrary() {
   );
 
   library.push(newBook);
+
   clearForm();
   closeForm();
 
+  // clear page before loading again
   table.innerHTML = '';
 
+  // load page
   addBooksToPage(library);
 }
 
-// write a funtion that
-// loops through the array
-// and display each book on the page
 function addBooksToPage(library) {
-  // for each book in the library
-  library.forEach(function (book) {
-    // create their html elements and classes
-    createBookElements(book);
-  });
+  for (let i = 0; i < library.length; i++) {
+    createBookElements(library[i], i);
+  }
+  loadBtnsTrash();
 }
 
-function createBookElements(book) {
-  const container = document.createElement('div');
-  container.classList.add('book-container', 'row');
-  const faBookIcon = document.createElement('i');
-  faBookIcon.classList.add('fas', 'fa-book');
-  const taContainer = document.createElement('div');
-  taContainer.classList.add('title-author-container');
-  const title = document.createElement('h2');
-  title.classList.add('title');
-  const author = document.createElement('p');
-  author.classList.add('author');
-  const pages = document.createElement('p');
-  pages.classList.add('pages');
-  const readStatus = document.createElement('p');
-  readStatus.classList.add('status');
-  const faTrashIcon = document.createElement('i');
-  faTrashIcon.classList.add('fas', 'fa-trash');
-
-  title.textContent = book.title;
-  author.textContent = book.author;
-  pages.textContent = `${book.pages} pages`;
-  readStatus.textContent = book.isRead;
-
-  taContainer.appendChild(title);
-  taContainer.appendChild(author);
-
-  container.appendChild(faBookIcon);
-  container.appendChild(taContainer);
-  container.appendChild(pages);
-  container.appendChild(readStatus);
-  container.appendChild(faTrashIcon);
-
-  table.appendChild(container);
+function createBookElements(book, index) {
+  table.innerHTML += `
+    <div class="book-container row" data-index="${index}">
+      <i class="fas fa-book"></i>
+      <div class="title-author-container">
+        <h2 class="title">${book.title}</h2>
+        <p class="author">${book.author}</p>
+      </div>
+      <p class="pages">${book.pages} pages</p>
+      <p class="status">${book.isRead}</p>
+      <i class="fas fa-trash"></i>
+    </div>
+  `;
 }
 
 const openForm = () => {
@@ -102,3 +80,23 @@ const clearForm = () => {
 
 btnNewBook.addEventListener('click', openForm);
 btnAdd.addEventListener('click', addBookToLibrary);
+btnCancel.addEventListener('click', () => {
+  clearForm();
+  closeForm();
+});
+
+const loadBtnsTrash = () => {
+  const btnsTrash = document.querySelectorAll('.fa-trash');
+
+  btnsTrash.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const index = e.target.parentElement.dataset.index;
+      library.splice(index, 1);
+      e.target.parentElement.remove();
+
+      // re-render the UI
+      table.innerHTML = '';
+      addBooksToPage(library);
+    });
+  });
+};
