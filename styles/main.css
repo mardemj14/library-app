@@ -47,7 +47,7 @@ body {
 }
 
 .fa-trash,
-.status {
+.status-btn {
   margin-left: 50px;
 }
 
@@ -61,8 +61,15 @@ body {
 }
 
 .pages,
-.status {
+.status-btn {
   width: 100px;
+}
+
+.status-btn {
+  font-size: 0.8rem;
+  padding: 2px;
+  border-style: none;
+  border-radius: 50px;
 }
 
 form {
@@ -94,7 +101,9 @@ input[type='checkbox'] {
   vertical-align: middle;
 }
 
-input[type='button'] {
+.btn-add,
+.btn-cancel,
+.btn-newbook {
   width: 130px;
   height: 40px;
   display: block;

@@ -16,7 +16,7 @@ function Book(title, author, pages, isRead = false) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = isRead ? 'Read' : 'Un-Read';
+  this.isRead = isRead;
 }
 
 function addBookToLibrary() {
@@ -44,6 +44,7 @@ function addBooksToPage(library) {
     createBookElements(library[i], i);
   }
   loadBtnsTrash();
+  loadtBtnsStatus();
 }
 
 function createBookElements(book, index) {
@@ -55,7 +56,7 @@ function createBookElements(book, index) {
         <p class="author">${book.author}</p>
       </div>
       <p class="pages">${book.pages} pages</p>
-      <p class="status">${book.isRead}</p>
+      <input class="status-btn" type="button" value="${book.isRead ? 'Read' : 'Un-Read'}">
       <i class="fas fa-trash"></i>
     </div>
   `;
@@ -95,6 +96,20 @@ const loadBtnsTrash = () => {
       e.target.parentElement.remove();
 
       // re-render the UI
+      table.innerHTML = '';
+      addBooksToPage(library);
+    });
+  });
+};
+
+const loadtBtnsStatus = () => {
+  const btnsStatus = document.querySelectorAll('.status-btn');
+
+  btnsStatus.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const index = e.target.parentElement.dataset.index;
+      library[index].isRead = !library[index].isRead;
+
       table.innerHTML = '';
       addBooksToPage(library);
     });
