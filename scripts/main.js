@@ -20,23 +20,27 @@ function Book(title, author, pages, isRead = false) {
 }
 
 function addBookToLibrary() {
-  const newBook = new Book(
-    titleInput.value,
-    authorInput.value,
-    pageInput.value,
-    statusInput.checked
-  );
+  if (titleInput.value === '' || authorInput.value === '' || pageInput.value === '') {
+    alert('Please fill out all fields in the form');
+  } else {
+    const newBook = new Book(
+      titleInput.value,
+      authorInput.value,
+      pageInput.value,
+      statusInput.checked
+    );
 
-  library.push(newBook);
+    library.push(newBook);
 
-  clearForm();
-  closeForm();
+    clearForm();
+    closeForm();
 
-  // clear page before loading again
-  table.innerHTML = '';
+    // clear page before loading again
+    table.innerHTML = '';
 
-  // load page
-  addBooksToPage(library);
+    // load page
+    addBooksToPage(library);
+  }
 }
 
 function addBooksToPage(library) {
