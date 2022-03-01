@@ -56,14 +56,11 @@ function addBooksToPage(library) {
 function createBookElements(book, index) {
   table.innerHTML += `
     <div class="book-container row" data-index="${index}">
-      <i class="fas fa-book"></i>
-      <div class="title-author-container">
-        <h2 class="title">${book.title}</h2>
-        <p class="author">${book.author}</p>
-      </div>
-      <p class="pages">${book.pages} pages</p>
+      <p class="title">${book.title}</p>
+      <p class="author">${book.author}</p>
+      <p class="pages">${book.pages}</p>
       <input class="status-btn" type="button" value="${book.isRead ? 'Read' : 'Un-Read'}">
-      <i class="fas fa-trash"></i>
+      <input class="delete-btn" type="button" value="Remove">
     </div>
   `;
 }
@@ -93,7 +90,7 @@ btnCancel.addEventListener('click', () => {
 });
 
 const loadBtnsTrash = () => {
-  const btnsTrash = document.querySelectorAll('.fa-trash');
+  const btnsTrash = document.querySelectorAll('.delete-btn');
 
   btnsTrash.forEach((btn) => {
     btn.addEventListener('click', (e) => {
