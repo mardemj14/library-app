@@ -41,6 +41,7 @@ h2 {
 
 .title {
   font-weight: 700;
+  letter-spacing: 1.5px;
 }
 
 .author {
@@ -120,11 +121,16 @@ h2 {
 .form-btns {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.8rem;
+  margin-top: 1.25rem;
 }
 
 .status-label {
   color: #fff;
+}
+
+.read-status {
+  padding: 0;
+  margin: 0;
 }
 
 .hidden {
